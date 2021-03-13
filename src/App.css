@@ -1,3 +1,44 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none !important;
+}
+
+body {
+  background-color:  #263263;
+}
+
+ul {
+  list-style: none;
+}
+
+.coinList-image {
+  width: 50px;
+}
+
+.coinList-item {
+  display: flex;
+}
+.coinSummary {
+  border-color: white !important;
+  border-style: outset;
+}
+.coin-data-category {
+  font-size: 10px;
+}
+
+
+.deleteIcon {
+  display: none;
+  position: absolute;
+  right: 6px;
+}
+
+.coin:hover .delete-icon {
+  display: block;
+}
+
 .App {
   text-align: center;
 }
