@@ -5,8 +5,8 @@ import Coin from './coin'
 
 const CoinList = () => {
     const [coins, setCoins] = useState([])
-    const { watchList } = useContext(WatchListContext)
-    const [isLoading, setIsLoading] = useState(false)
+    const { watchList, deleteCoin } = useContext(WatchListContext);
+    const [isLoading, setIsLoading] = useState(false);
     console.log(watchList);
     useEffect(() => {
         const fetchData = async () => {
@@ -21,8 +21,13 @@ const CoinList = () => {
         setIsLoading(false) 
 
         } // this adds on to the api route as defined in apis/coingecko for fetch req for coins
-        fetchData();
-    }, []); // only fetch one time adding empty arr 
+        if (watchList.length > 0) {
+            fetchData();
+        }  else {
+            setCoins([]);
+        }
+        
+    }, [watchList]); // only fetch one time adding empty arr, or when watchList is updated 
 
     const renderCoins = () => {
         return <div>...loading</div>
@@ -31,7 +36,7 @@ const CoinList = () => {
     return (
         <ul className="coinlist list-group mt-2">
             {coins.map(coin => {
-                return <Coin key={coin.id} coin={coin} />
+                return <Coin key={coin.id} coin={coin} deleteCoin={deleteCoin}/>
             })}
 
         </ul>
