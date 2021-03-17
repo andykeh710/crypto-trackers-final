@@ -9,6 +9,8 @@
         <CoinList />
         </div>
     );
-    };
+    }; 
+    /// this will be the home page where dynamically rendered data will show other users and their portfolio scores 
+
 
     export default CoinSummaryPage;

@@ -4,7 +4,7 @@
     const AddCoin = () => {
     const [isActive, setIsActive] = useState(false);
     const { addCoin } = useContext(WatchListContext);
-    const availableCoins = [
+    const availableCoins = [  // hardcoded nice to have would be search feature for all coingecko 
         "bitcoin",
         "ethereum",
         "ripple",
@@ -19,6 +19,7 @@
 
     const handleClick = (coin) => {
         addCoin(coin);
+        
         setIsActive(false);
     };
 

@@ -5,12 +5,13 @@ import CoinDetailPage from './pages/CoinDetailPage';
 import CoinSumPage from './pages/CoinSumPage';
 // import LoginPage from "./pages/LoginPage";
 import Header from './components/Header'
-
+import CreatePortfolio from './pages/CreatePortfolio'
 import "./App.css"
 import { WatchListContextProvider } from './context/watchlistContext';
 
 
 const App = () => {
+
   return (
     <div className="container">
               {/* <FirebaseDatabaseProvider>
@@ -23,7 +24,7 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Route exact path="/" component={CoinSumPage} />
-
+          <Route exact path="/createPortfolio" component={CreatePortfolio} />
           <Route path="/coins/:id" component={CoinDetailPage} />
         </BrowserRouter>
       </WatchListContextProvider>

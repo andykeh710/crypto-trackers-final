@@ -8,8 +8,6 @@ function Logout() {
     const onSuccess = () => {
         alert('Logout Success ');
     }
-
-
     return (
         <div> 
             <GoogleLogout

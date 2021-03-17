@@ -5,8 +5,7 @@
             {
             title: String,
             description: String,
-            published: Boolean,
-            // coins: []
+            published: Boolean
             },
             { timestamps: true }
         )
