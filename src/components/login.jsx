@@ -11,13 +11,14 @@ function Login() {
     const onSuccess = (res) => {
         console.log('[Login Success] current user: ', res.profileObj );
         
-        // axios({
-        //     method: "POST",
-        //     url: "http://localhost:8000/api/googlelogin",
-        //     data: {tokenId: response.tokenId} 
-        // }).then(response => {
-        //     console.log(response)
-        // })
+        axios({
+            method: "POST",
+            url: "http://localhost:8080/api/googlelogin",
+            data: {tokenId: res.tokenId} 
+        }).then(res => {
+            console.log(res);
+
+        })
         // refreshTokenSetup(res); // handles new token ids 
     }
 
