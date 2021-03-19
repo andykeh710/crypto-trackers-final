@@ -13,7 +13,7 @@ function Logout() {
             <GoogleLogout
             clientId={clientId}
             render={renderProps => (
-                <Link className="text-center text-warning mt-3 bm-4" onClick={renderProps.onClick} disabled={renderProps.disabled}>logout</Link>
+                <Link className="text-center text-warning mt-3 bm-4" to='/' onClick={renderProps.onClick} disabled={renderProps.disabled}>logout</Link>
             )}
             buttonText="Logout"
             onLogoutSuccess={onSuccess}

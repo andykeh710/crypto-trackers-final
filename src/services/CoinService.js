@@ -1,6 +1,6 @@
 import http from '../apis/mainApi';
 
-class TutorialDataService {
+class CoinService {
 getAll() {
     return http.get("/tutorials");
 }
@@ -30,4 +30,4 @@ findByTitle(title) {
 }
 }
 
-export default new TutorialDataService();
+export default new CoinService();

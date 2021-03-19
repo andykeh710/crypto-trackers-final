@@ -1,56 +1,8 @@
 
-import TutorialDataService from "../services/CoinService";
+import CoinService from "../services/CoinService";
 import React, { useState, useContext } from "react";
-import { WatchListContext } from "../context/watchlistContext";
-
-// const AddCoin = () => {
-// const [isActive, setIsActive] = useState(false);
-// const { addCoin } = useContext(WatchListContext);
-// const availableCoins = [  // hardcoded nice to have would be search feature for all coingecko 
-//     "bitcoin",
-//     "ethereum",
-//     "ripple",
-//     "tether",
-//     "bitcoin-cash",
-//     "litecoin",
-//     "eos",
-//     "okb",
-//     "tezos",
-//     "cardano",
-// ];
-
-// const handleClick = (coin) => {
-//     addCoin(coin);
-    
-//     setIsActive(false);
-// };
-
-// return (
-//     <div className="dropdown">
-//     <button
-//         onClick={() => setIsActive(!isActive)}
-//         className="btn btn-primary dropdown-toggle"
-//         type="button"
-//     >
-//         Add Coin
-//     </button>
-//     <div className={isActive ? "dropdown-menu show" : "dropdown-menu"}>
-//         {availableCoins.map((el) => {
-//         return (
-//             <a
-//             onClick={() => handleClick(el)}
-//             href="#"
-//             className="dropdown-item"
-//             >
-//             {el}
-//             </a>
-//         );
-//         })}
-//     </div>
-//     </div>
-// );
-// };
-
+// import { WatchListContext } from "../context/watchlistContext";
+import UserService from "../services/UserService";
 // export default AddCoin;
 const BuildPortfolio = () => {
 const initialTutorialState = {
@@ -73,7 +25,7 @@ const saveTutorial = () => {
     description: tutorial.description
     };
     console.log("-------------------------------------------------------------------------DATA ",data)
-    TutorialDataService.create(data)
+    CoinService.create(data)
     .then(response => {
         setTutorial({
         id: response.data.id,
@@ -93,6 +45,8 @@ const newTutorial = () => {
     setTutorial(initialTutorialState);
     setSubmitted(false);
 };
+
+
 
 return (
         <div className="submit-form">

@@ -9,15 +9,14 @@ const clientId = '849863262005-d015trj6hp4piohkfmal41u16n8a3m43.apps.googleuserc
 function Login() {
 
     const onSuccess = (res) => {
-        console.log('[Login Success] current user: ', res.profileObj );
-        
+        console.log('[Login Success] current user: ', res.profileObj);
+        // this is where we should save user to DB --- ping router add user to db **
         axios({
             method: "POST",
             url: "http://localhost:8080/api/googlelogin",
-            data: {tokenId: res.tokenId} 
+            data: {tokenId: res.tokenId, email: res.profileObj.email} 
         }).then(res => {
-            console.log(res);
-
+            console.log("------------------------------------------------------------", res);
         })
         // refreshTokenSetup(res); // handles new token ids 
     }
