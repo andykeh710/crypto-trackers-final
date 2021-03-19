@@ -19,6 +19,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
   /// callin connect method here 
 db.mongoose
   .connect(db.url, {
@@ -27,6 +36,7 @@ db.mongoose
   })
   .then(() => {
     console.log("Connected to the database!");
+    console.log(db)
   })
   .catch(err => {
     console.log("Cannot connect to the database!", err);
@@ -36,12 +46,12 @@ db.mongoose
 
 
 // simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to froggytown application." });
+app.get("/api", (req, res) => {
+  res.json("Hello");
 });
 
 require("./app/routes/tutorial.routes")(app);
-
+require("./app/routes/userRoute")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
