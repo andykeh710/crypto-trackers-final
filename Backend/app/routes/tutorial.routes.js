@@ -1,22 +1,12 @@
-const e = require("express");
+// const e = require("express");
 
-    
-    
     module.exports = app => {
-        const tutorials = require("../controllers/tutorial.controller.js");
-        const googlelogin = require("../controllers/googlelogin.js");
+        const tutorials = require("../controllers/tutorial.controller");
         
         var router = require("express").Router();
         
-
-
-        
         // Create a new Tutorial
         router.post("/", tutorials.create);
-
-        router.post('googlelogin', function(req, res){
-            googlelogin
-        })
     
         // Retrieve all Tutorials
         router.get("/", tutorials.findAll);
@@ -36,6 +26,6 @@ const e = require("express");
         // Create a new Tutorial
         router.delete("/", tutorials.deleteAll);
 
-    
+        
         app.use('/api/tutorials', router);
     };
