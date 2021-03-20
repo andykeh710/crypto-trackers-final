@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 // import axios from 'axios';
 import AddUser from "./AddUser";
 
+
+
 const clientId = '849863262005-d015trj6hp4piohkfmal41u16n8a3m43.apps.googleusercontent.com';
 
 function Login() {
@@ -13,19 +15,10 @@ function Login() {
     const onSuccess = (res) => {
         console.log('[Login Success] current user: ', res.profileObj);
         let email = res.profileObj.email
-        
         let id = res.profileObj.googleId
         AddUser(email, id);
         
-        // this is where we should save user to DB --- ping router add user to db **
-        // axios({
-        //     method: "POST",
-        //     url: "http://localhost:8080/api/googlelogin",
-        //     data: {tokenId: res.tokenId, email: res.profileObj.email} 
-        // }).then(res => {
-        //     console.log("------------------------------------------------------------", res);
-        // })
-        // refreshTokenSetup(res); // handles new token ids 
+        
     }
 
     const onFailure = (res) => {

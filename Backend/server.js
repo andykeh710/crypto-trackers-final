@@ -36,7 +36,7 @@ db.mongoose
   })
   .then(() => {
     console.log("Connected to the database!");
-    console.log(db)
+    //console.log(db)
   })
   .catch(err => {
     console.log("Cannot connect to the database!", err);

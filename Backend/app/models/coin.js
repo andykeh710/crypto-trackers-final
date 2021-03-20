@@ -4,6 +4,7 @@
         mongoose.Schema(
             {
             name: String,
+            id: String
             // description: String,
             // published: Boolean
             },
@@ -13,6 +14,24 @@
     
         return Coin;
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // module.exports = mongoose => {  // in case we need to have id instead of _id 
     //     var schema = mongoose.Schema(

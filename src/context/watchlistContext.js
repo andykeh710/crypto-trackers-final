@@ -19,7 +19,7 @@ export const WatchListContextProvider = (props) => {
             return el !== coin  // looking for specific coin to delete 
         }))
     }
-    
+
         return (
         <WatchListContext.Provider value = {{ watchList, deleteCoin, addCoin }}>
             {props.children}

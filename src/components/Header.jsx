@@ -1,7 +1,7 @@
     import React from "react";
     import { Link } from "react-router-dom";
     import { myContext } from "../context/Context";
-    import axios from "axios";
+    // import axios from "axios";
     import Login from './login';
     import Logout from './Logout';
     // import { isSignedIn } from 'react-google-login';
@@ -16,15 +16,15 @@
 
     const Header = () => {
         const { username } = React.useContext(myContext);
-        const logout = async () => {
-        const response = await axios.get("http://localhost:4000/logout", {
-            withCredentials: true,
-        });
+        // const logout = async () => {
+        // const response = await axios.get("http://localhost:4000/logout", {
+        //     withCredentials: true,
+        // });
         
-        if (response.data === "success") {
-            window.location.href = "/";
-        }
-        };
+        // if (response.data === "success") {
+        //     window.location.href = "/";
+        // }
+        // };
         console.log("---------------------------------")
 
         return (
