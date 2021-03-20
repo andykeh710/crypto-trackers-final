@@ -50,7 +50,7 @@ app.get("/api", (req, res) => {
   res.json("Hello");
 });
 
-require("./app/routes/tutorial.routes")(app);
+require("./app/routes/coinsRoute")(app);
 require("./app/routes/userRoute")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

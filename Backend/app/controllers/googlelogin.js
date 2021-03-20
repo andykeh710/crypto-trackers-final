@@ -16,12 +16,14 @@ exports.googlelogin = (req, res) => {
 }
 
     exports.create = (req, res) => {
-        console.log("ssssssssssssss--------------------------")
+        console.log("ssssssssssssss-----------------------------------------------------------------AAAAAAAAAAAAAAAAAAAAAAAAAAAAARECCCCCCCCC-", req)
         // Create a Tutorial
+
         const user1 = new UserObj({
         name: req.body.name,
         id: req.body.id,
-        email: req.body.email
+        email: req.body.email,
+        coins: req.body.coins
         // published: req.body.published ? req.body.published : false
         });
         // Save Tutorial in the database

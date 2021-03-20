@@ -20,7 +20,7 @@ const tokenSchema = new Schema({
 
 })
 
-const Course = mongoose.model('Course', courseSchema);
+const Course = mongoose.model('Course', tokenSchema);
 
 module.exports = Course;
 

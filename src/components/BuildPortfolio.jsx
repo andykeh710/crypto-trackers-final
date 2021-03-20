@@ -5,33 +5,31 @@ import React, { useState, useContext } from "react";
 import UserService from "../services/UserService";
 // export default AddCoin;
 const BuildPortfolio = () => {
-const initialTutorialState = {
+const initialCoinState = {
     id: null,
-    title: "",
+    name: "",
     description: "",
     published: false
 };
-const [tutorial, setTutorial] = useState(initialTutorialState);
+const [coin, setCoin] = useState(initialCoinState);  //[tutorial, setTutorial]
 const [submitted, setSubmitted] = useState(false);
 
 const handleInputChange = event => {
     const { name, value } = event.target;
-    setTutorial({ ...tutorial, [name]: value });
+    setCoin({ ...coin, [name]: value });
 };
 
-const saveTutorial = () => {
+const saveCoin = () => {
     var data = {
-    title: tutorial.title,
-    description: tutorial.description
+    name: coin.name,
+    description: coin.description
     };
     console.log("-------------------------------------------------------------------------DATA ",data)
     CoinService.create(data)
     .then(response => {
-        setTutorial({
+        setCoin({
         id: response.data.id,
-        title: response.data.title,
-        description: response.data.description,
-        published: response.data.published
+        title: response.data.title
         });
         setSubmitted(true);
         console.log(response.data);
@@ -41,8 +39,8 @@ const saveTutorial = () => {
     });
 };
 
-const newTutorial = () => {
-    setTutorial(initialTutorialState);
+const newCoin = () => {
+    setCoin(initialCoinState);
     setSubmitted(false);
 };
 
@@ -53,7 +51,7 @@ return (
         {submitted ? (
             <div>
             <h4>You submitted successfully!</h4>
-            <button className="btn btn-success" onClick={newTutorial}>
+            <button className="btn btn-success" onClick={newCoin}>
                 Add
             </button>
             </div>
@@ -66,7 +64,7 @@ return (
                 className="form-control"
                 id="title"
                 required
-                value={tutorial.title}   /// this is where we pass in the coin *****
+                value={coin.name}   /// this is where we pass in the coin *****
                 onChange={handleInputChange}
                 name="title"
                 />
@@ -79,13 +77,13 @@ return (
                 className="form-control"
                 id="description"
                 required
-                value={tutorial.description}
+                value={coin.description}
                 onChange={handleInputChange}
                 name="description"
                 />
             </div>
     
-            <button onClick={saveTutorial} className="btn btn-success">
+            <button onClick={saveCoin} className="btn btn-success">
                 Submit
             </button>
             </div>

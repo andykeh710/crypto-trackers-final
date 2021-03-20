@@ -5,8 +5,8 @@ module.exports = mongoose => { // model we use to store data
         {
         name: String,
         id: String,
-        email: String
-        // coins: [[]]
+        email: String,
+        coins: [[]]
         },
         { timestamps: true }
     )
