@@ -7,5 +7,4 @@ const GOOGLE = {
 
 module.exports = {
     GOOGLE
-
 };

@@ -1,25 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { Link } from "react-router-dom";
-import { refreshTokenSetup } from '../utils/refreshToken';
-import axios from 'axios';
+// import { refreshTokenSetup } from '../utils/refreshToken';
+// import axios from 'axios';
+import AddUser from "./AddUser";
+
+
 
 const clientId = '849863262005-d015trj6hp4piohkfmal41u16n8a3m43.apps.googleusercontent.com';
 
 function Login() {
+    const [logedUser, setlogedUser] = useState("");
 
     const onSuccess = (res) => {
-        console.log('[Login Success] current user: ', res.profileObj );
+        console.log('[Login Success] current user: ', res.profileObj);
+        let email = res.profileObj.email
+        let id = res.profileObj.googleId
+        AddUser(email, id);
         
-        axios({
-            method: "POST",
-            url: "http://localhost:8080/api/googlelogin",
-            data: {tokenId: res.tokenId} 
-        }).then(res => {
-            console.log(res);
-
-        })
-        // refreshTokenSetup(res); // handles new token ids 
+        
     }
 
     const onFailure = (res) => {

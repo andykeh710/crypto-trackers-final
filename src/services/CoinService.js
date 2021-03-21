@@ -1,33 +1,33 @@
 import http from '../apis/mainApi';
 
-class TutorialDataService {
+class CoinService {
 getAll() {
-    return http.get("/tutorials");
+    return http.get("/coins");
 }
 
 get(id) {
-    return http.get(`/tutorials/${id}`);
+    return http.get(`/coins/${id}`);
 }
 
 create(data) {
-    return http.post("/tutorials", data);
+    return http.post("/coins", data);
 }
 
 update(id, data) {
-    return http.put(`/tutorials/${id}`, data);
+    return http.put(`/coins/${id}`, data);
 }
 
 delete(id) {
-    return http.delete(`/tutorials/${id}`);
+    return http.delete(`/coins/${id}`);
 }
 
 deleteAll() {
-    return http.delete(`/tutorials`);
+    return http.delete(`/coins`);
 }
 
 findByTitle(title) {
-    return http.get(`/tutorials?title=${title}`);
+    return http.get(`/coins?title=${title}`);
 }
 }
 
-export default new TutorialDataService();
+export default new CoinService();

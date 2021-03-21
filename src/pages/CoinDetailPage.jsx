@@ -21,7 +21,7 @@
     useEffect(() => {
         const fetchData = async () => {
         setIsLoading(true);
-        const [day, week, year, detail] = await Promise.all([
+        const [day, week, year, detail] = await Promise.all([ // all at once so faster 
             coinGecko.get(`/coins/${id}/market_chart/`, {
             params: {
                 vs_currency: "usd",
@@ -40,7 +40,7 @@
                 days: "365",
             },
             }),
-            coinGecko.get("/coins/markets/", {
+            coinGecko.get("/coins/markets/", { /// API call 
             params: {
                 vs_currency: "usd",
                 ids: id,

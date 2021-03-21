@@ -8,7 +8,7 @@ const Context = (props) => {
 
   React.useEffect(() => {
     axios
-      .get("http://localhost:4000/getUser", { withCredentials: true })
+      .get("http://localhost:8080/googlelogin")
       .then((res) => {
         if (res.data) {
           setUserObject(res.data);
