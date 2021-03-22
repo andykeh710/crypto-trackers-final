@@ -7,9 +7,17 @@ import Header from './components/Header'
 import CreatePortfolio from './pages/CreatePortfolio'
 import "./App.css"
 import { WatchListContextProvider } from './context/watchlistContext';
-
+// import axios from 'axios';
 
 const App = () => {
+
+// function checkLoginStatus() {
+//     axios.get("http://localhost:3000/logged_in", {withCredentials: true})
+//     .then(response => {
+//       console.log("response from check - ", response)
+//     })
+// }
+
 
   return (
     <div className="container">

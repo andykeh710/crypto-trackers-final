@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import coingecko from '../apis/coingecko';
 // import { WatchListContext } from '../context/watchlistContext'
 import Coin from './coin'
@@ -13,7 +13,7 @@ const UserCoinList = () => {
         let currentUser = res.data.length -1; // gets most recent user 
         // let curentID = res.data[currentUser]._id;  // current user ID 
         coinArr = res.data[currentUser].coins; 
-        return coinArr
+        // return coinArr
     })
 
 
