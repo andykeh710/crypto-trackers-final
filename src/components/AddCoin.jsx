@@ -2,11 +2,7 @@
     import { useState, useContext } from "react";
     import { WatchListContext } from "../context/watchlistContext";
     import UserService from "../services/UserService";
-    // import { useGoogleLogin } from 'react-google-login'
-    // import ReactDOM from 'react-dom';
-    // import { GoogleLogin } from 'react-google-login';
 
-    // const signIn = useGoogleLogin;
     const AddCoin = () => {
     const [isActive, setIsActive] = useState(false);
     const { addCoin } = useContext(WatchListContext);
@@ -27,6 +23,7 @@
     const handleClick = (coin) => {
         // coin is the coin to add to db    //// PULL IN LOGIN INFO - MODIFY COIN ARR
         // promise pending express react ---
+        
         let AllUsers = UserService.getAll()
         .then((res) => {
             console.log(res.data)
@@ -50,17 +47,6 @@
 
         console.log("-------------------------------------------------------------------------DATA ",data, "------------------------------------------ ", AllUsers)
             CoinService.create(data)
-            // .then(response => {
-            //     setCoin({
-            //     id: response.data.id,
-            //     name: response.data.name
-            //     });
-            //     setSubmitted(true);
-            //     console.log(response.data);
-            // })
-            // .catch(e => {
-            //     console.log(e);
-            // });
         };
         addCoin(coin);
         saveCoin();

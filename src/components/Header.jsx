@@ -1,21 +1,16 @@
     import React from "react";
     import { Link } from "react-router-dom";
-    import { myContext } from "../context/Context";
-    // import axios from "axios";
+
     import Login from './login';
     import Logout from './Logout';
-    // import { isSignedIn } from 'react-google-login';
-    // import { useGoogleLogin } from 'react-google-login'
-
-    // const { signIn, loaded } = useGoogleLogin({
-    //     isSignedIn,
-    //   })
+    import IsLoggedIn from "./IsLoggedIn";
 
 
 
 
     const Header = () => {
-        const { username } = React.useContext(myContext);
+        
+        const username = IsLoggedIn
         // const logout = async () => {
         // const response = await axios.get("http://localhost:4000/logout", {
         //     withCredentials: true,
@@ -25,13 +20,13 @@
         //     window.location.href = "/";
         // }
         // };
-        console.log("---------------------------------")
+        console.log("---------------------------------", username)
 
         return (
             <div>
 
-                <h1 className="text-center text-warning mt-3 bm-4">Crypto Trackers</h1>
-                <ul className="navbar">
+            <h1 className="text-center text-warning mt-3 bm-4">Crypto Trackers</h1>
+            <ul className="navbar">
             <li>
             <Link className="text-right text-warning mt-3 bm-2" to="/"> Home</Link>
             </li>
@@ -40,11 +35,7 @@
             </li>
             <li><Login /></li>
             <li><Logout /></li>
-            {/* {isSignedIn ? (
-                
-            ) : (
-            <li><Login /></li>
-            )} */}
+            <li>test</li>
             
             
 
@@ -63,4 +54,4 @@
 
     }
 
-    export default Header
+     export default Header

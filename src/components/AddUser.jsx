@@ -1,7 +1,7 @@
-// import React from 'react'
+
 import axios from 'axios';
 import UserService from "../services/UserService";
-// import AddCoin from "./AddCoin";
+
 
 const AddUser = (email, id) => {
 
@@ -26,10 +26,6 @@ const AddUser = (email, id) => {
         data: {email: userEmail} 
     }).then(res => {
         /// ADD COIN HERE by passing data into add coin component 
-
-        var LoggedEmail = res.data.email;
-        var LoggedCoins = res.data.coins;
-
         // AddCoin(LoggedEmail, LoggedCoins)
 
     })
