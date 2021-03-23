@@ -8,19 +8,7 @@
 
 
 
-    const Header = () => {
-        
-        const username = IsLoggedIn
-        // const logout = async () => {
-        // const response = await axios.get("http://localhost:4000/logout", {
-        //     withCredentials: true,
-        // });
-        
-        // if (response.data === "success") {
-        //     window.location.href = "/";
-        // }
-        // };
-        console.log("---------------------------------", username)
+    const Header = ({setLoggedUser}) => {
 
         return (
             <div>
@@ -33,7 +21,7 @@
             <li>
             <Link className="text-right text-warning mt-3 bm-2" to="/createPortfolio"> Create Portfolio</Link>
             </li>
-            <li><Login /></li>
+            <li><Login setLoggedUser={setLoggedUser}/></li>
             <li><Logout /></li>
             <li>test</li>
             

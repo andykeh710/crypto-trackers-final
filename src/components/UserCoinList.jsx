@@ -3,25 +3,47 @@ import coingecko from '../apis/coingecko';
 // import { WatchListContext } from '../context/watchlistContext'
 import Coin from './coin'
 import UserService from "../services/UserService";
-var coinArr = [];
+//import IsLoggedIn from "./IsLoggedIn"
+var coinArr1 = [];
+var userEmailArr = [];
+var coinArray = [];
+var userIndex; 
 
-const UserCoinList = () => {
+const UserCoinList = (props) => {
+    
 
+    let curLoggedUser= props.curLoggedUser;
     UserService.getAll()
     .then((res) => {
-        console.log(res.data)
-        let currentUser = res.data.length -1; // gets most recent user 
+
+        let allUsers  = res.data;
+        for (let i=0; i< allUsers.length; i++){
+            userEmailArr.push(allUsers[i].email);
+            coinArray.push(allUsers[i].coins)
+        }
+        console.log("USER EMAIL ARR=====-=---------------------------", userEmailArr, coinArray)
+         // gets most recent user 
+        userIndex = userEmailArr.indexOf(props.loggedUser);
         // let curentID = res.data[currentUser]._id;  // current user ID 
-        coinArr = res.data[currentUser].coins; 
+        // coinArr = res.data[currentUser].coins; 
         // return coinArr
+        coinArr1 = coinArray[userIndex];
+        var coinArr = coinArr1; 
+
+
+        
+    }).then((res) => {
+        
     })
-
-
-
+    
+    
+    console.log("COIN ARRAY FINAL ------------", coinArr)
     const [coins, setCoins] = useState([]);
     // const { watchList, deleteCoin } = useContext(WatchListContext);
     const [isLoading, setIsLoading] = useState(false);
-    console.log(coinArr);
+    //console.log(coinArr);
+
+
     useEffect(() => {
     const fetchData = async () => {
         setIsLoading(true);

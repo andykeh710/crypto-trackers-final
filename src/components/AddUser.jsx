@@ -9,11 +9,6 @@ const AddUser = (email, id) => {
     // if already with an account then they are logged in but skip post to db 
     // find and search all for above id to compare 
     //take timestamp of coin price
-    // dynamically render other user's picks
-    // hide/show based on if registered or not 
-    // styling 
-    // about page 
-    // clean up junk code 
     // profile page 
 
     
@@ -27,7 +22,6 @@ const AddUser = (email, id) => {
     }).then(res => {
         /// ADD COIN HERE by passing data into add coin component 
         // AddCoin(LoggedEmail, LoggedCoins)
-
     })
 }
 

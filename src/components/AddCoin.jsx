@@ -1,4 +1,4 @@
-    import CoinService from "../services/CoinService";
+    // import CoinService from "../services/CoinService";
     import { useState, useContext } from "react";
     import { WatchListContext } from "../context/watchlistContext";
     import UserService from "../services/UserService";
@@ -21,13 +21,14 @@
     ];
 
     const handleClick = (coin) => {
-        // coin is the coin to add to db    //// PULL IN LOGIN INFO - MODIFY COIN ARR
+        // coin is the coin to add to db    
+        //// PULL IN LOGIN INFO - MODIFY COIN ARR
         // promise pending express react ---
         
         let AllUsers = UserService.getAll()
         .then((res) => {
             console.log(res.data)
-            let currentUser = res.data.length -1; // gets most recent user 
+            let currentUser = res.data.length -1; // gets most recent user -- NEED TO CHANGE THIS TO PULL CURRENT USER 
             let curentID = res.data[currentUser]._id; 
             let coinArr = res.data[currentUser].coins; 
             coinArr.push(coin)  // pushes to user's coins 
@@ -36,20 +37,22 @@
 
             UserService.update(curentID, data); // update user coin list 
             return coinArr
+
         })
 
-        let coinName = coin; 
-        const saveCoin = () => {
-            
-            var data = {
-            name: coinName,
-            };
+        // let coinName = coin; 
+        // const saveCoin = () => {
+        //     var data = {
+        //     name: coinName,
+        //     };
+        // console.log("-------------------------------------------------------------------------DATA ",data, "------------------------------------------ ", AllUsers)
+        //     CoinService.create(data)
+        // };
+        // saveCoin();
 
-        console.log("-------------------------------------------------------------------------DATA ",data, "------------------------------------------ ", AllUsers)
-            CoinService.create(data)
-        };
-        addCoin(coin);
-        saveCoin();
+
+
+        // addCoin(coin);
         setIsActive(false);
     };
 

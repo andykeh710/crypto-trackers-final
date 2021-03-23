@@ -1,9 +1,7 @@
-// import React from 'react'
+
 import { useState, useEffect } from 'react'
 import coingecko from '../apis/coingecko';
-// import { WatchListContext } from '../context/watchlistContext'
-// import Coin from './coin'
-// import UserService from "../services/UserService";
+
 import Coin from './coin'
 
 function RenderUserCoins(coinArr) {
