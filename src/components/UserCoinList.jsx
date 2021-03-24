@@ -4,65 +4,63 @@ import coingecko from '../apis/coingecko';
 import Coin from './coin'
 import UserService from "../services/UserService";
 //import IsLoggedIn from "./IsLoggedIn"
-var coinArr1 = [];
+var coinArr = [];
 var userEmailArr = [];
 var coinArray = [];
 var userIndex; 
 
 const UserCoinList = (props) => {
-    
+    const [coins, setCoins] = useState([]);
 
-    let curLoggedUser= props.curLoggedUser;
+    const [isLoading, setIsLoading] = useState(false);
+
+    let [userCoinList, setuserCoinList] = useState([]);
+
+
+
+    console.log("PROPS -----------------", props.loggedUser)
     UserService.getAll()
     .then((res) => {
-
+        // setIsLoadingUsers(true)
         let allUsers  = res.data;
+        if (userEmailArr.length === 0){
         for (let i=0; i< allUsers.length; i++){
             userEmailArr.push(allUsers[i].email);
             coinArray.push(allUsers[i].coins)
         }
+        }
         console.log("USER EMAIL ARR=====-=---------------------------", userEmailArr, coinArray)
          // gets most recent user 
         userIndex = userEmailArr.indexOf(props.loggedUser);
-        // let curentID = res.data[currentUser]._id;  // current user ID 
-        // coinArr = res.data[currentUser].coins; 
-        // return coinArr
-        coinArr1 = coinArray[userIndex];
-        var coinArr = coinArr1; 
+        console.log("USERINDEX ", userIndex)
+        coinArr = coinArray[userIndex];
 
-
-        
-    }).then((res) => {
-        
+        setuserCoinList(coinArr)
     })
-    
-    
-    console.log("COIN ARRAY FINAL ------------", coinArr)
-    const [coins, setCoins] = useState([]);
-    // const { watchList, deleteCoin } = useContext(WatchListContext);
-    const [isLoading, setIsLoading] = useState(false);
-    //console.log(coinArr);
-
 
     useEffect(() => {
     const fetchData = async () => {
         setIsLoading(true);
+        console.log("USER COIN LIST BEFORE COINGECKO ------------------------******", userCoinList)
         const response = await coingecko.get("/coins/markets/", {
         params: {
             vs_currency: "usd",
-            ids: coinArr.join(","),
+            ids: userCoinList.join(","),
         },
         });
         setCoins(response.data);
         console.log("============================", response.data)
-        setIsLoading(false);
+        setIsLoading(false)
+
     };
+
 
     if (coinArr.length > 0) {
         fetchData();
     } else;
-    }, [coinArr]);
+    }, [coinArr])
 
+    
     const renderCoins = () => {
     if (isLoading) {
         return <div>Loading...</div>;

@@ -38,11 +38,12 @@ const UserPage = ({coin, user}) => {
 
 
     return (
-        <div>
+        <div className="text-decoration-none my-1 coin">
+            <br></br>
             <h1>{user}</h1>
         <ul className="coinlist list-group mt-2">
         {coins.map((coin) => {
-            return <Coin key={coin.id} coin={coin} />;
+            return<Coin key={coin.id} coin={coin} />;
         })}
         </ul>
 

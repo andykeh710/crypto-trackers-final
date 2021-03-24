@@ -17,6 +17,11 @@ ul {
   width: 50px;
 }
 
+.profileBasket {
+  border-color: rgb(93, 103, 241) !important;
+  border-style: outset !important;
+}
+
 .coinlist-item {
   display: flex;
 }

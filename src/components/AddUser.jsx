@@ -20,6 +20,8 @@ const AddUser = (email, id) => {
         url: "http://localhost:8080/api/googlelogin",
         data: {email: userEmail} 
     }).then(res => {
+
+        
         /// ADD COIN HERE by passing data into add coin component 
         // AddCoin(LoggedEmail, LoggedCoins)
     })

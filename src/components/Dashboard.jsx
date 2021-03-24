@@ -26,7 +26,7 @@ const Dashboard = () => {
     };
 
     return (
-        <div>
+        <div >
         {users.map((user) => {
         return (
         <UserPage key={user.id} user={user.email} coin={user.coins}></UserPage>)

@@ -7,7 +7,7 @@ import UserCoinList from "../components/UserCoinList";
 // nice-to-have time feature to lock in how well they have done over time 
 
 const CreatePortfolio = (props) => {
-    let frog = props.loggedUser
+
     console.log("FROGGY 72--------------------------------------------------------",  props.loggedUser)
 
 
