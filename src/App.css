@@ -18,7 +18,7 @@ ul {
 }
 
 .profileBasket {
-  border-color: rgb(93, 103, 241) !important;
+  text-align: center;
   border-style: outset !important;
 }
 
@@ -43,4 +43,22 @@ ul {
 
 .coin:hover .delete-icon {
   display: block;
+}
+
+.modal {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 5px;
+  color: #333;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  max-width: 50%;
+  padding: 1rem 2rem;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .modal {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);  
+  }
 }

@@ -1,14 +1,14 @@
     import React from "react";
-    // import UserPortfolios from "../components/UserPortfolios";
-    // import OldCoinList from "../components/OldCoinList";
+
     import Dashboard from "../components/Dashboard";
+    import DashboardChart from "../components/DashboardChart";
     const CoinSummaryPage = () => {
     return (
-        <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
-{/* 
-        <OldCoinList /> 
-        <UserPortfolios /> */}
+        <div >
+        <DashboardChart />
+        <div >
         <Dashboard />
+        </div>
         </div>
     );
     }; 

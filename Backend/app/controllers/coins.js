@@ -9,12 +9,7 @@
         exports.create = (req, res) => {
             console.log(req)
             // // Validate request
-            // if (!req.body.title) {
-            // console.log(req)
-            // res.status(400).send({ message: "Content can not be empty! " });
-            // return;
-            // }
-            // Create a Tutorial
+
             const coin = new Coins({
             name: req.body.name,
             // description: req.body.description,

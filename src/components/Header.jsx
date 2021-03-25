@@ -1,45 +1,43 @@
     import React from "react";
     import { Link } from "react-router-dom";
-
     import Login from './login';
     import Logout from './Logout';
-    import IsLoggedIn from "./IsLoggedIn";
 
 
 
+    const Header = (props) => {
+        console.log("HEADER LOGGED USER ", props)
 
-    const Header = ({setLoggedUser}) => {
+        var loggedUser = props.loggedUser;
+
 
         return (
-            <div>
+            <div >
 
             <h1 className="text-center text-warning mt-3 bm-4">Crypto Trackers</h1>
+        
+            {loggedUser === '' || loggedUser === undefined ? (
             <ul className="navbar">
             <li>
-            <Link className="text-right text-warning mt-3 bm-2" to="/"> Home</Link>
+            <Link className="text-right text-warning mt-3 bm-2" to="/" > Home</Link>
+            </li>
+            <li><Login setLoggedUser={props.setLoggedUser} exact path="/"/></li>
+            </ul>
+
+            ) : (
+            <ul className="navbar">
+            <li>
+            <Link className="text-right text-warning mt-3 bm-2" to="/" > Home</Link>
             </li>
             <li>
             <Link className="text-right text-warning mt-3 bm-2" to="/createPortfolio"> Create Portfolio</Link>
             </li>
-            <li><Login setLoggedUser={setLoggedUser}/></li>
-            <li><Logout /></li>
-            <li>test</li>
-            
-            
+            <li><Logout setLoggedUser={props.setLoggedUser} exact path="/"  /></li>
+            </ul>
+            )}
 
-            {/* {username ? (
-            <li className="text-right text-warning mt-3 bm-2" onClick={logout}>Logout</li>
-            ) : (
-            <li>
-                <Link className="text-right text-warning mt-3 bm-2" to="/login">Login</Link>
-            </li> 
-            )} */}
-        </ul>
-            </div>
+        </div>
             
-        )
-
-
-    }
+        )}
 
      export default Header

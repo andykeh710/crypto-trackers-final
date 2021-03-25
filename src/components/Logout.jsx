@@ -1,15 +1,15 @@
 import React from 'react';
 import { GoogleLogout } from 'react-google-login';
 import { Link } from "react-router-dom";
-import IsLoggedIn from "./IsLoggedIn";
+
 const clientId = '849863262005-d015trj6hp4piohkfmal41u16n8a3m43.apps.googleusercontent.com';
 
-function Logout() {
-
+function Logout(props) {
     const onSuccess = () => {
-        IsLoggedIn(false)
+        props.setLoggedUser('');
         alert('Logout Success ');
     }
+
     return (
         <div> 
             <GoogleLogout

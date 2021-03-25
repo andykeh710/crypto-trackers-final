@@ -37,13 +37,14 @@ function Login({setLoggedUser}) {
         console.log('[Login Success] current user: ', res.profileObj);
         let email = res.profileObj.email
         let id = res.profileObj.googleId
-
+        let name = res.profileObj.name
+        
         if (emailArr.includes(email)){
             console.log("User already exists welcome back ", email)
             setLoggedUser(email)
         } else {
             console.log("NEW user ", emailArr)
-            AddUser(email, id);
+            AddUser(email, id, name);
             console.log("EMAIL ARR ", emailArr)
             setLoggedUser(email)
         }

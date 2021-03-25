@@ -13,8 +13,9 @@ const CreatePortfolio = (props) => {
 
 return (
     <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
-    <AddCoin />
-    {/* {props.loggedUser} */}
+        
+    <AddCoin loggedUser={props.loggedUser}/>
+
     <UserCoinList loggedUser={props.loggedUser}/>
 
     </div>
