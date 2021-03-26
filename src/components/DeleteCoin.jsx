@@ -1,19 +1,19 @@
 import { useState } from "react";
 import UserService from "../services/UserService";
+// import coin from "./coin"
+// import AddCoin from "./AddCoin"
 
 var userEmailArr = [];
 var coinArray = [];
 var userIndex; 
-const DeleteCoin = (coinId) => {  // get coin id e.g. the name compare to existing coins in array and delete 
+function DeleteCoin(id, user) {  // get coin id e.g. the name compare to existing coins in array and delete 
+/// take coin id and compare and delete for user 
 
-const [isActive, setIsActive] = useState(false);
-console.log("props LOGGED USER", props.loggedUser.email)
-let userEmail = props.loggedUser.email;
-
+console.log(id, user, "PROPS IN DELETE COIN ")
+const [setIsActive] = useState(false);
     // coin is the coin to add to db    
     //// PULL IN LOGIN INFO - MODIFY COIN ARR
     // promise pending express react ---
-
     UserService.getAll()
     .then((res) => {
         //console.log("RES > DATA ", res.data)
@@ -24,26 +24,32 @@ let userEmail = props.loggedUser.email;
                 coinArray.push(allUsers[i].coins)
         }
         }
-        userIndex = userEmailArr.indexOf(userEmail);
+        userIndex = userEmailArr.indexOf(user);
         
         let indexlocation = userIndex
         let currentUser = res.data[indexlocation] 
-        // gets most recent user -- NEED TO CHANGE THIS TO PULL CURRENT USER 
-        //console.log("USERINDEX NEW ", currentUser, userIndex, res.data[indexlocation] )
-
+        return currentUser
+    })
+        .then((currentUser) => {
         let curentID = currentUser._id; 
         let coinArr = currentUser.coins; 
-        coinArr.push(coin)  // pushes to user's coins 
-        currentUser.coins = coinArr; 
+
+        const indexSplice = coinArr.indexOf(id)
+        if (indexSplice > -1) {
+            coinArr.splice(indexSplice, 1)
+        }
+
         let data = {coins: coinArr};
 
-        UserService.update(curentID, data); // update user coin list 
-        console.log("Trying to store coins ", data)
+        UserService.update(curentID, data)
+console.log('delete');
 
-    }, [userEmailArr]) 
-    setIsActive(false); 
+    },[userEmailArr]) 
+    .then((res) => {
+        setIsActive(false);
+        window.location.reload();
+    })
 };
 
 
-
-export default AddCoin;
+export default DeleteCoin;
