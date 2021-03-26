@@ -1,5 +1,4 @@
     import React from "react";
-
     import Dashboard from "../components/Dashboard";
     import DashboardChart from "../components/DashboardChart";
     const CoinSummaryPage = () => {

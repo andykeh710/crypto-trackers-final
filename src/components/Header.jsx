@@ -14,7 +14,7 @@
 
         return (
 
-            <nav className={sticky ? "navbar navbar-sticky" : "navbar"}>
+            <nav className={sticky ? "navbar navbar-sticky "  : "navbar navbar-sticky"}>
             {/* <h1 className="text-center text-warning mt-3 bm-4">Crypto Trackers</h1> */}
             <div className="">
             {/* {sticky ? <img src="https://drive.google.com/uc?id=1V-B6GzMF3PEUBXeDxJOwONfgNztKP_6P"

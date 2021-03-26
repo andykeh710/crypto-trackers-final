@@ -12,7 +12,8 @@ const UserCoinList = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     let [userCoinList, setuserCoinList] = useState([]);
     let [emptyPortfolio, setEmptyPortfolio] = useState(true)
-    console.log("PROPS -----------------", props.loggedUser)
+    const [didMount, setDidMount] = useState(false); 
+    //console.log("PROPS -----------------", props.loggedUser)
     UserService.getAll()
     .then((res) => {
         let allUsers  = res.data;
@@ -30,9 +31,10 @@ const UserCoinList = (props) => {
     [coinArr, coins])
 
     useEffect(() => {
+        setDidMount(true);
     const fetchData = async () => {
         setIsLoading(true);
-        console.log("USER COIN LIST BEFORE COINGECKO ------------------------******", userCoinList)
+        //console.log("USER COIN LIST BEFORE COINGECKO ------------------------******", userCoinList)
         const response = await coingecko.get("/coins/markets/", {
         params: {
             vs_currency: "usd",
@@ -40,7 +42,7 @@ const UserCoinList = (props) => {
         },
         });
         setCoins(response.data);
-        //console.log("============================", response.data)
+        console.log("============================", userCoinList)
         setIsLoading(false)
     };
     if (userCoinList !== undefined && userCoinList.length > 0) {
@@ -49,7 +51,12 @@ const UserCoinList = (props) => {
     } else {
         setEmptyPortfolio(true)
     }
+    return () => setDidMount(false);
+
 }, [userCoinList])
+if(!didMount) {
+    return null;
+  }
 
     const renderCoins = () => {
     if (isLoading) {
@@ -60,7 +67,7 @@ const UserCoinList = (props) => {
     }
 
     return (
-        <ul className="coinlist list-group mt-2">
+        <ul className="coinlist list-group mt-2 charts">
         {coins.map((coin) => {
             return <Coin key={coin.id} coin={coin} /> ;  /// deleteCoin={deleteCoin} 
         })}

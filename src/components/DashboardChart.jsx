@@ -65,9 +65,11 @@ const renderData = () => {
     return <div>Loading....</div>;
     }
     return (
-    <div className="coinlist">
+    <section>
+        <div className="coinlist">
         <HistoryChart data={coinData} />
-    </div>
+        </div>
+    </section>
     );
 };
 

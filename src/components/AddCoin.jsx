@@ -26,10 +26,9 @@
         //// PULL IN LOGIN INFO - MODIFY COIN ARR
         // promise pending express react ---
 
-       
         UserService.getAll()
         .then((res) => {
-            console.log("RES > DATA ", res.data)
+            //console.log("RES > DATA ", res.data)
             let allUsers = res.data;
             if (userEmailArr.length === 0){
             for (let i=0; i< allUsers.length; i++){
@@ -51,10 +50,10 @@
             let data = {coins: coinArr};
 
             UserService.update(curentID, data); // update user coin list 
+            console.log("Trying to store coins ", data)
 
-
-        })
-        setIsActive(false);
+        }, [userEmailArr]) 
+        setIsActive(false); 
     };
 
 
@@ -72,7 +71,7 @@
             return (
                 <a
                 onClick={() => handleClick(el)}
-                href="javascript:;"
+                href={() => false}
                 className="dropdown-item"
                 >
                 {el}
@@ -81,7 +80,6 @@
             })}
         </div>
         </div>
-    );
-    };
+    )};
 
     export default AddCoin;
