@@ -37,12 +37,10 @@
             }
             }
             userIndex = userEmailArr.indexOf(userEmail);
-            
             let indexlocation = userIndex
             let currentUser = res.data[indexlocation] 
-            // gets most recent user -- NEED TO CHANGE THIS TO PULL CURRENT USER 
-            //console.log("USERINDEX NEW ", currentUser, userIndex, res.data[indexlocation] )
             return currentUser
+            
             })
             .then((currentUser) => {
                 console.log(currentUser, "CURRENT USER ---------------------------")

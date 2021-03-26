@@ -1,8 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import UserService from "../services/UserService";
 
-const Coin = ({coin, deleteCoin}) => {
-    //console.log(coin.price_change_percentage_24h, "THIS IS THE COIN ")
+const Coin = ({coin, loggedUser}) => {
+
+var userEmailArr = [];
+var coinArray = [];
+var userIndex; 
+function DeleteCoin(id, user) {  // get coin id e.g. the name compare to existing coins in array and delete 
+/// take coin id and compare and delete for user 
+console.log(id, user, "PROPS IN DELETE COIN ")
+const [setIsActive] = useState(false);
+    UserService.getAll()
+    .then((res) => {
+
+        let allUsers = res.data;
+        if (userEmailArr.length === 0){
+        for (let i=0; i< allUsers.length; i++){
+                userEmailArr.push(allUsers[i].email);
+                coinArray.push(allUsers[i].coins)
+        }
+        }
+        userIndex = userEmailArr.indexOf(user);
+        
+        let indexlocation = userIndex
+        let currentUser = res.data[indexlocation] 
+        return currentUser
+    })
+        .then((currentUser) => {
+        let curentID = currentUser._id; 
+        let coinArr = currentUser.coins; 
+
+        const indexSplice = coinArr.indexOf(id)
+        if (indexSplice > -1) {
+            coinArr.splice(indexSplice, 1)
+        }
+
+        let data = {coins: coinArr};
+
+        UserService.update(curentID, data)
+console.log('delete');
+
+    },[userEmailArr]) 
+    .then((res) => {
+        setIsActive(false);
+        window.location.reload();
+    })
+};
+
+
     return (
         <Link to={`/coins/${coin.id}`} className="text-decoration-none my-1 coin">
             <li className="coinlist-item list-group-item list-group-item-action d-flex justify-content-between align-items-center text-dark">
@@ -29,7 +75,7 @@ const Coin = ({coin, deleteCoin}) => {
                 </span>
                 <i onClick={(e) =>{
                     e.preventDefault()
-                    deleteCoin(coin.id)
+                    DeleteCoin(coin, loggedUser)
                 }} className="fa fa-times-circle text-danger"></i>
             </li>
         </Link> 

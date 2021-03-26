@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import coingecko from '../apis/coingecko';
 import Coin from './coin'
 import UserService from "../services/UserService";
+
+
 var coinArr = [];
 var userEmailArr = [];
 var coinArray = [];
@@ -13,7 +15,8 @@ const UserCoinList = (props) => {
     let [userCoinList, setuserCoinList] = useState([]);
     let [emptyPortfolio, setEmptyPortfolio] = useState(true)
     const [didMount, setDidMount] = useState(false); 
-    //console.log("PROPS -----------------", props.loggedUser)
+    console.log("PROPS -----------------", props.loggedUser)
+    let loggedUser = props.loggedUser.email
     UserService.getAll()
     .then((res) => {
         let allUsers  = res.data;
@@ -69,7 +72,7 @@ if(!didMount) {
     return (
         <ul className="coinlist list-group mt-2 charts">
         {coins.map((coin) => {
-            return <Coin key={coin.id} coin={coin} /> ;  /// deleteCoin={deleteCoin} 
+            return <Coin key={coin.id} coin={coin} loggedUser={loggedUser} /> ;  /// deleteCoin={deleteCoin} 
         })}
         </ul>
     )};
