@@ -27,8 +27,7 @@ const UserCoinList = (props) => {
         console.log("USERINDEX ", userIndex)
         coinArr = coinArray[userIndex];
         setuserCoinList(coinArr)
-    },
-    [coinArr, coins])
+    })
 
     useEffect(() => {
         setDidMount(true);
@@ -53,7 +52,8 @@ const UserCoinList = (props) => {
     }
     return () => setDidMount(false);
 
-}, [userCoinList])
+}, [userCoinList, setCoins])
+
 if(!didMount) {
     return null;
   }

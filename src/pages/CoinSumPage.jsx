@@ -1,9 +1,11 @@
     import React from "react";
     import Dashboard from "../components/Dashboard";
     import DashboardChart from "../components/DashboardChart";
+    import Hero from '../components/Hero'
     const CoinSummaryPage = () => {
     return (
         <div >
+            <Hero></Hero>
         <DashboardChart />
         <div >
         <Dashboard />

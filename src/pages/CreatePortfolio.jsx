@@ -12,11 +12,12 @@ const CreatePortfolio = (props) => {
 
 
 return (
-    <div className="shadow border p-2 rounded mt-2 profileBasket">
-        <h1 className="text-warning text-center">Hello {props.loggedUser.name}</h1>
-    <AddCoin loggedUser={props.loggedUser}/>
+    <div className="shadow border p-2 rounded mt-2 profileBasket2">
 
-    <UserCoinList loggedUser={props.loggedUser}/>
+        <h1 className="text-warning text-center">Hello {props.loggedUser.name}</h1>
+        
+        <AddCoin loggedUser={props.loggedUser}/>
+        <UserCoinList loggedUser={props.loggedUser}/>
 
     </div>
 );

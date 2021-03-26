@@ -29,7 +29,7 @@
                 <li>
                 <Link className="navbar--link-item text-left text-warning mt-3 bm-2" to="/" > Home</Link>
                 </li>
-                <li><Login className="navbar--link-item" setLoggedUser={setLoggedUser} exact path="/"/></li>
+                <li><Login className="navbar--link-item" setLoggedUser={setLoggedUser} exact path="/" /></li>
                 </ul>
                 </div>
 
