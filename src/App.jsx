@@ -2,25 +2,22 @@ import React from 'react'
 import {BrowserRouter, Route} from 'react-router-dom';
 import CoinDetailPage from './pages/CoinDetailPage';
 import CoinSumPage from './pages/CoinSumPage';
-
-// import LoginPage from "./pages/LoginPage";
-
 import { useState } from 'react'
 import Header from './components/Header'
 import CreatePortfolio from './pages/CreatePortfolio'
 import "./App.css"
 import { WatchListContextProvider } from './context/watchlistContext';
 
+
 const Welcome = ({ stickyRef }) => (
-
     <div className="welcome" ref={stickyRef}>
-
     </div>
 );
 
+
+
 const App = () => {
 const [loggedUser, setLoggedUser] = useState("");
-
 React.useEffect(() => {
   return () => {
     window.removeEventListener("scroll", () => handleScroll);
@@ -48,7 +45,6 @@ const debounce = (func, wait = 0, immediate = true) => {
     if (callNow) func.apply(context);
   };
 };
-
 window.addEventListener("scroll", debounce(handleScroll));
 
   return (
