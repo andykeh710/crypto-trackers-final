@@ -70,7 +70,7 @@
             return (
                 <a
                 onClick={() => handleClick(el)}
-                href="#"
+                href="/#"
                 className="dropdown-item"
                 >
                 {el}
