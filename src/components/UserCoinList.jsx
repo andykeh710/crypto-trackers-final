@@ -15,7 +15,6 @@ const UserCoinList = (props) => {
     console.log("PROPS -----------------", props.loggedUser)
     UserService.getAll()
     .then((res) => {
-
         let allUsers  = res.data;
         if (userEmailArr.length === 0){
         for (let i=0; i< allUsers.length; i++){
@@ -23,8 +22,7 @@ const UserCoinList = (props) => {
             coinArray.push(allUsers[i].coins)
         }
         }
-        // gets most recent user 
-        userIndex = userEmailArr.indexOf(props.loggedUser);
+        userIndex = userEmailArr.indexOf(props.loggedUser.email);
         console.log("USERINDEX ", userIndex)
         coinArr = coinArray[userIndex];
         setuserCoinList(coinArr)

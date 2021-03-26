@@ -4,40 +4,47 @@
     import Logout from './Logout';
 
 
+    const Header = ({loggedUser, sticky, setLoggedUser}) => {
+        console.log("HEADER LOGGED USER ", loggedUser, sticky)
 
-    const Header = (props) => {
-        console.log("HEADER LOGGED USER ", props)
+        // var loggedUser = props.loggedUser;
+        // let sticky = props.sticky
 
-        var loggedUser = props.loggedUser;
 
 
         return (
-            <div >
 
-            <h1 className="text-center text-warning mt-3 bm-4">Crypto Trackers</h1>
-        
-            {loggedUser === '' || loggedUser === undefined ? (
-            <ul className="navbar">
-            <li>
-            <Link className="text-right text-warning mt-3 bm-2" to="/" > Home</Link>
-            </li>
-            <li><Login setLoggedUser={props.setLoggedUser} exact path="/"/></li>
-            </ul>
+            <nav className={sticky ? "navbar navbar-sticky" : "navbar"}>
+            {/* <h1 className="text-center text-warning mt-3 bm-4">Crypto Trackers</h1> */}
+            <div className="">
+            {/* {sticky ? <img src="https://drive.google.com/uc?id=1V-B6GzMF3PEUBXeDxJOwONfgNztKP_6P"
+                            alt="logo" 
+                            className="navbar--logo" /> : null} */}
+                <h1 className="text-warning">Crypto Trackers</h1>
+                </div>
 
-            ) : (
-            <ul className="navbar">
-            <li>
-            <Link className="text-right text-warning mt-3 bm-2" to="/" > Home</Link>
-            </li>
-            <li>
-            <Link className="text-right text-warning mt-3 bm-2" to="/createPortfolio"> Create Portfolio</Link>
-            </li>
-            <li><Logout setLoggedUser={props.setLoggedUser} exact path="/"  /></li>
-            </ul>
-            )}
+                {loggedUser === '' || loggedUser === undefined ? (
+                    <div>
+                <ul className="navbar--link">
+                <li>
+                <Link className="navbar--link-item text-left text-warning mt-3 bm-2" to="/" > Home</Link>
+                </li>
+                <li><Login className="navbar--link-item" setLoggedUser={setLoggedUser} exact path="/"/></li>
+                </ul>
+                </div>
 
-        </div>
-            
+                ) : (
+                <ul className="navbar--link">
+                <li>
+                <Link className="navbar--link-item text-warning mt-3 bm-2" to="/" > Home</Link>
+                </li>
+                <li>
+                <Link className="navbar--link-item text-warning mt-3 bm-2" to="/createPortfolio"> Create Portfolio</Link>
+                </li>
+                <li><Logout className="navbar--link-item" setLoggedUser={setLoggedUser} exact path="/"  /></li>
+                </ul>
+                )}
+            </nav>
         )}
 
      export default Header

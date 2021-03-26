@@ -6,7 +6,8 @@
     var userIndex; 
     const AddCoin = (props) => {
     const [isActive, setIsActive] = useState(false);
-
+    console.log("props LOGGED USER", props.loggedUser.email)
+    let userEmail = props.loggedUser.email;
     const availableCoins = [  // hardcoded nice to have would be search feature for all coingecko 
         "bitcoin",
         "ethereum",
@@ -25,7 +26,7 @@
         //// PULL IN LOGIN INFO - MODIFY COIN ARR
         // promise pending express react ---
 
-        console.log("props LOGGED USER", props.loggedUser)
+       
         UserService.getAll()
         .then((res) => {
             console.log("RES > DATA ", res.data)
@@ -36,7 +37,7 @@
                     coinArray.push(allUsers[i].coins)
             }
             }
-            userIndex = userEmailArr.indexOf(props.loggedUser);
+            userIndex = userEmailArr.indexOf(userEmail);
             let currentUser = res.data[userIndex] 
             // gets most recent user -- NEED TO CHANGE THIS TO PULL CURRENT USER 
             console.log("USERINDEX NEW ", currentUser)
@@ -50,9 +51,6 @@
             //return coinArr
 
         })
-
-
-
         // addCoin(coin);
         setIsActive(false);
     };
