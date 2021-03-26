@@ -7,7 +7,7 @@ import Header from './components/Header'
 import CreatePortfolio from './pages/CreatePortfolio'
 import "./App.css"
 import { WatchListContextProvider } from './context/watchlistContext';
-
+// import AboutUs from './AboutUs'
 
 const Welcome = ({ stickyRef }) => (
     <div className="welcome" ref={stickyRef}>
@@ -55,6 +55,7 @@ window.addEventListener("scroll", debounce(handleScroll));
           <React.Fragment>
           <Welcome stickyRef={stickyRef} />
           </React.Fragment>
+          
           <div></div>
           <Route exact path="/" component={CoinSumPage} />
           <Route 
@@ -63,6 +64,7 @@ window.addEventListener("scroll", debounce(handleScroll));
             <CreatePortfolio {...props} isAuthed={true} loggedUser={loggedUser}/>
           )} />
           <Route path="/coins/:id" component={CoinDetailPage} />
+          {/* <AboutUs></AboutUs> */}
         </BrowserRouter>
       </WatchListContextProvider>
     </div>

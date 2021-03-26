@@ -42,7 +42,10 @@
             let currentUser = res.data[indexlocation] 
             // gets most recent user -- NEED TO CHANGE THIS TO PULL CURRENT USER 
             //console.log("USERINDEX NEW ", currentUser, userIndex, res.data[indexlocation] )
-
+            return currentUser
+            })
+            .then((currentUser) => {
+                console.log(currentUser, "CURRENT USER ---------------------------")
             let curentID = currentUser._id; 
             let coinArr = currentUser.coins; 
             coinArr.push(coin)  // pushes to user's coins 
@@ -53,7 +56,10 @@
             console.log("Trying to store coins ", data)
 
         }, [userEmailArr]) 
-        setIsActive(false); 
+        .then((res) => {
+            setIsActive(false);
+            window.location.reload();
+        })
     };
 
 
@@ -66,6 +72,7 @@
         >
             Add Coin
         </button>
+
         <div className={isActive ? "dropdown-menu show" : "dropdown-menu"}>
             {availableCoins.map((el) => {
             return (
