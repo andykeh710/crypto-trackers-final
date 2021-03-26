@@ -27,13 +27,13 @@ function Login({setLoggedUser}) {
     };
 
 
-    {users.map((user) => {
-        emailArr.push(user.email);
-    })}
+ 
     
 
     const onSuccess = (res) => { /// this runs when user is properly logged in 
-
+        users.map((user) => (
+            emailArr.push(user.email)
+        ))
         console.log('[Login Success] current user: ', res.profileObj);
         let email = res.profileObj.email
         let id = res.profileObj.googleId
@@ -41,12 +41,12 @@ function Login({setLoggedUser}) {
 
         if (emailArr.includes(email)){
             console.log("User already exists welcome back ", email)
-            setLoggedUser(res.profileObj)
+            return setLoggedUser(res.profileObj)
         } else {
             console.log("NEW user ", emailArr)
             AddUser(email, id, name);
             console.log("EMAIL ARR ", emailArr)
-            setLoggedUser(res.profileObj)
+            return setLoggedUser(res.profileObj)
         }
     }
 
