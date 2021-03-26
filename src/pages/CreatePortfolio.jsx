@@ -13,7 +13,7 @@ const CreatePortfolio = (props) => {
 
 return (
     <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
-        <h1>Hello {props.loggedUser.name}</h1>
+        <h1 className="text-warning text-center">Hello {props.loggedUser.name}</h1>
     <AddCoin loggedUser={props.loggedUser}/>
 
     <UserCoinList loggedUser={props.loggedUser}/>

@@ -38,9 +38,12 @@
             }
             }
             userIndex = userEmailArr.indexOf(userEmail);
-            let currentUser = res.data[userIndex] 
+            
+            let indexlocation = userIndex
+            let currentUser = res.data[indexlocation] 
             // gets most recent user -- NEED TO CHANGE THIS TO PULL CURRENT USER 
-            console.log("USERINDEX NEW ", currentUser)
+            //console.log("USERINDEX NEW ", currentUser, userIndex, res.data[indexlocation] )
+
             let curentID = currentUser._id; 
             let coinArr = currentUser.coins; 
             coinArr.push(coin)  // pushes to user's coins 
@@ -48,10 +51,9 @@
             let data = {coins: coinArr};
 
             UserService.update(curentID, data); // update user coin list 
-            //return coinArr
+
 
         })
-        // addCoin(coin);
         setIsActive(false);
     };
 
@@ -70,7 +72,7 @@
             return (
                 <a
                 onClick={() => handleClick(el)}
-                href="/#"
+                href="javascript:;"
                 className="dropdown-item"
                 >
                 {el}
