@@ -6,8 +6,23 @@
 }
 
 body {
-  background-color: #263238;
+  background-color: #263238; 
+
+  background-image: url("https://www.completecontroller.com/wp-content/uploads/Crypto-Cloud-Mining-Complete-Controller-1030x543.jpg");
+  
+  background-size: cover;
+  background-attachment: fixed;
+  color: rgb(129, 129, 129);
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  
 }
+
+
+
 
 ul {
   list-style: none;
@@ -17,18 +32,60 @@ ul {
   width: 50px;
 }
 
-.profileBasket {
-  text-align: center;
-  border-style: outset !important;
-}
-
-.coinlist-item {
-  display: flex;
-}
 
 .coinsummary {
   border-color: white !important;
   border-style: outset !important;
+}
+
+
+.profileBasket {
+  text-align: center;
+  border-style: outset !important;
+  /* border-style: outset !important; */
+  background-color: #afc9d6;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+  color: rgb(129, 129, 129);
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  max-width: 100%;
+  padding: 1rem 2rem;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .profileBasket {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(38, 50, 56, 0.5); 
+  }
+} 
+/* .modal {
+  background-color: #263238;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+  color: #333;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  max-width: 100%;
+  padding: 1rem 2rem;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .modal {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);  
+  }
+} */
+
+
+
+
+.coinlist-item {
+  display: flex;
 }
 
 .coin-data-category {
@@ -48,7 +105,7 @@ ul {
 
 .navbar {
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: left;
   padding: 0.5rem 2.5rem;
   position: fixed;
@@ -56,14 +113,28 @@ ul {
   width: 100%;
 }
 
+
 .navbar-sticky {
   background: #263238;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
   position: fixed;
+  color: #333;
   top: 0;
   left: 0;
-  box-shadow: 1px 1px 1px #222;
-  animation: moveDown 0.5s ease-in-out;
+  max-width: 100%;
+  /* box-shadow: 1px 1px 1px #222; */
+  animation: moveDown 0.5s ease-in-out; 
+  padding: 1rem 2rem;
 }
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .navbar-sticky {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(38, 50, 56, 0.5);  
+  }
+}
+
 
 .navbar--logo-holder {
   display: flex;
@@ -108,28 +179,20 @@ ul {
 }
 /* Welcome */
 .welcome {
+  /* background-image: url("https://www.completecontroller.com/wp-content/uploads/Crypto-Cloud-Mining-Complete-Controller-1030x543.jpg"); */
+  display: inline-flex;
+
   background-color: #263238;
- 
-  background-attachment: fixed;
   background-size: cover;
+  max-width: 100%;
   line-height: 1.8;
   height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  
 }
 .welcome--logo {
   width: 10rem;
 }
 
-.welcome--about {
-  padding: 2rem;
-  width: 50rem;
-  color: #444;
-  text-align: justify;
-  margin: auto;
-}
 
 .welcome__cta-primary {
   background: #e74c3c;
@@ -144,33 +207,13 @@ ul {
 
 
 
-/* 
-.modal {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 5px;
-  color: #333;
-  font-family: system-ui, sans-serif;
-  line-height: 1.5;
-  max-width: 50%;
-  padding: 1rem 2rem;
-}
 
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-  .modal {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.5);  
-  }
-} */
-
-/* 
-body {
-  background-image: url('https://wallpapercave.com/wp/wp2337006.jpg');
-  background-position: center center;
-  background-repeat: repeat;
+.charts {
+  /* background-image: url('https://res.cloudinary.com/jerrick/image/upload/fl_progressive,q_auto,w_1024/vhzgzjsfma4jvruhk6un.gif'); */
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
-  margin: 0;
   display: grid;
-  place-items: center;
-} */
+  height: 100%;
+  width: 100%;
+}
