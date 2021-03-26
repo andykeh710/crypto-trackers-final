@@ -1,57 +1,50 @@
     import React from "react";
     import { Link } from "react-router-dom";
-
     import Login from './login';
     import Logout from './Logout';
-    import IsLoggedIn from "./IsLoggedIn";
 
 
+    const Header = ({loggedUser, sticky, setLoggedUser}) => {
+        console.log("HEADER LOGGED USER ", loggedUser, sticky)
+
+        // var loggedUser = props.loggedUser;
+        // let sticky = props.sticky
 
 
-    const Header = () => {
-        
-        const username = IsLoggedIn
-        // const logout = async () => {
-        // const response = await axios.get("http://localhost:4000/logout", {
-        //     withCredentials: true,
-        // });
-        
-        // if (response.data === "success") {
-        //     window.location.href = "/";
-        // }
-        // };
-        console.log("---------------------------------", username)
 
         return (
-            <div>
 
-            <h1 className="text-center text-warning mt-3 bm-4">Crypto Trackers</h1>
-            <ul className="navbar">
-            <li>
-            <Link className="text-right text-warning mt-3 bm-2" to="/"> Home</Link>
-            </li>
-            <li>
-            <Link className="text-right text-warning mt-3 bm-2" to="/createPortfolio"> Create Portfolio</Link>
-            </li>
-            <li><Login /></li>
-            <li><Logout /></li>
-            <li>test</li>
-            
-            
+            <nav className={sticky ? "navbar navbar-sticky" : "navbar"}>
+            {/* <h1 className="text-center text-warning mt-3 bm-4">Crypto Trackers</h1> */}
+            <div className="">
+            {/* {sticky ? <img src="https://drive.google.com/uc?id=1V-B6GzMF3PEUBXeDxJOwONfgNztKP_6P"
+                            alt="logo" 
+                            className="navbar--logo" /> : null} */}
+                <h1 className="text-warning">Crypto Trackers</h1>
+                </div>
 
-            {/* {username ? (
-            <li className="text-right text-warning mt-3 bm-2" onClick={logout}>Logout</li>
-            ) : (
-            <li>
-                <Link className="text-right text-warning mt-3 bm-2" to="/login">Login</Link>
-            </li> 
-            )} */}
-        </ul>
-            </div>
-            
-        )
+                {loggedUser === '' || loggedUser === undefined ? (
+                    <div>
+                <ul className="navbar--link">
+                <li>
+                <Link className="navbar--link-item text-left text-warning mt-3 bm-2" to="/" > Home</Link>
+                </li>
+                <li><Login className="navbar--link-item" setLoggedUser={setLoggedUser} exact path="/"/></li>
+                </ul>
+                </div>
 
-
-    }
+                ) : (
+                <ul className="navbar--link">
+                <li>
+                <Link className="navbar--link-item text-warning mt-3 bm-2" to="/" > Home</Link>
+                </li>
+                <li>
+                <Link className="navbar--link-item text-warning mt-3 bm-2" to="/createPortfolio"> Create Portfolio</Link>
+                </li>
+                <li><Logout className="navbar--link-item" setLoggedUser={setLoggedUser} exact path="/"  /></li>
+                </ul>
+                )}
+            </nav>
+        )}
 
      export default Header

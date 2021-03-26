@@ -6,12 +6,18 @@ import UserCoinList from "../components/UserCoinList";
 // created portfolios only accessable by user to edit. 
 // nice-to-have time feature to lock in how well they have done over time 
 
-const CreatePortfolio = () => {
+const CreatePortfolio = (props) => {
+
+    console.log("FROGGY 72--------------------------------------------------------",  props)
+
+
 return (
     <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
-    <AddCoin />
+        <h1>Hello {props.loggedUser.name}</h1>
+    <AddCoin loggedUser={props.loggedUser}/>
 
-    <UserCoinList />
+    <UserCoinList loggedUser={props.loggedUser}/>
+
     </div>
 );
 };
