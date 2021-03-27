@@ -1,5 +1,5 @@
 <img src="https://user-images.githubusercontent.com/51566205/112085370-630b4d00-8b58-11eb-9fee-d65875bfc9b6.jpeg" />
-# The Crypto Tracker
+<h1>The Crypto Tracker</h1>
 
 Welcome to the crypto currency price tracking app utilizing the MERN Stack. React is one of the most popular modern frontend JavaScript frameworks and this will be the foundation for building a larger and more complex project at Kingsland University.
 
