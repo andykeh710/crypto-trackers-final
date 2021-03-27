@@ -4,9 +4,12 @@
     var userEmailArr = [];
     var coinArray = [];
     var userIndex; 
+
     const AddCoin = (props) => {
     const [isActive, setIsActive] = useState(false);
+
     console.log("props LOGGED USER", props.loggedUser.email)
+    
     let userEmail = props.loggedUser.email;
     const availableCoins = [  // hardcoded nice to have would be search feature for all coingecko 
         "bitcoin",
@@ -40,7 +43,7 @@
             let indexlocation = userIndex
             let currentUser = res.data[indexlocation] 
             return currentUser
-            
+
             })
             .then((currentUser) => {
                 console.log(currentUser, "CURRENT USER ---------------------------")
@@ -49,7 +52,6 @@
             coinArr.push(coin)  // pushes to user's coins 
             currentUser.coins = coinArr; 
             let data = {coins: coinArr};
-
             UserService.update(curentID, data); // update user coin list 
             console.log("Trying to store coins ", data)
 
