@@ -15,17 +15,20 @@ const UserCoinList = (props) => {
     let [userCoinList, setuserCoinList] = useState([]);
     let [emptyPortfolio, setEmptyPortfolio] = useState(true)
     const [didMount, setDidMount] = useState(false); 
-    console.log("PROPS -----------------", props.loggedUser)
+
+
     let loggedUser = props.loggedUser.email
     UserService.getAll()
     .then((res) => {
         let allUsers  = res.data;
+
         if (userEmailArr.length === 0){
-        for (let i=0; i< allUsers.length; i++){
-            userEmailArr.push(allUsers[i].email);
-            coinArray.push(allUsers[i].coins)
+            for (let i=0; i< allUsers.length; i++){
+                userEmailArr.push(allUsers[i].email);
+                coinArray.push(allUsers[i].coins)
+            }
         }
-        }
+
         userIndex = userEmailArr.indexOf(props.loggedUser.email);
         console.log("USERINDEX ", userIndex)
         coinArr = coinArray[userIndex];
@@ -33,18 +36,19 @@ const UserCoinList = (props) => {
     })
 
     useEffect(() => {
+
         setDidMount(true);
-    const fetchData = async () => {
+
+        const fetchData = async () => {
         setIsLoading(true);
-        //console.log("USER COIN LIST BEFORE COINGECKO ------------------------******", userCoinList)
         const response = await coingecko.get("/coins/markets/", {
-        params: {
-            vs_currency: "usd",
-            ids: userCoinList.join(","),
+            params: {
+                vs_currency: "usd",
+                ids: userCoinList.join(","),
         },
         });
         setCoins(response.data);
-        console.log("============================", userCoinList)
+        // console.log("============================", userCoinList)
         setIsLoading(false)
     };
     if (userCoinList !== undefined && userCoinList.length > 0) {

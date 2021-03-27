@@ -2,51 +2,53 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import UserService from "../services/UserService";
 
-const Coin = ({coin, loggedUser}) => {
-
 var userEmailArr = [];
 var coinArray = [];
 var userIndex; 
-function DeleteCoin(id, user) {  // get coin id e.g. the name compare to existing coins in array and delete 
-/// take coin id and compare and delete for user 
-console.log(id, user, "PROPS IN DELETE COIN ")
-const [setIsActive] = useState(false);
-    UserService.getAll()
-    .then((res) => {
 
-        let allUsers = res.data;
-        if (userEmailArr.length === 0){
-        for (let i=0; i< allUsers.length; i++){
-                userEmailArr.push(allUsers[i].email);
-                coinArray.push(allUsers[i].coins)
-        }
-        }
-        userIndex = userEmailArr.indexOf(user);
-        
-        let indexlocation = userIndex
-        let currentUser = res.data[indexlocation] 
-        return currentUser
-    })
-        .then((currentUser) => {
-        let curentID = currentUser._id; 
-        let coinArr = currentUser.coins; 
+const DeleteCoin = (id, user) => {  // get coin id e.g. the name compare to existing coins in array and delete 
+    /// take coin id and compare and delete for user 
+            console.log(id, user, "PROPS IN DELETE COIN ")
+                UserService.getAll()
+                .then((res) => {
+    
+                    let allUsers = res.data;
+                    if (userEmailArr.length === 0){
+                    for (let i=0; i< allUsers.length; i++){
+                            userEmailArr.push(allUsers[i].email);
+                            coinArray.push(allUsers[i].coins)
+                    }
+                    }
+                    userIndex = userEmailArr.indexOf(user);
+                    
+                    let indexlocation = userIndex
+                    let currentUser = res.data[indexlocation] 
+                    console.log(currentUser, "CURRENT USER ")
+                    return currentUser
+                })
+                    .then((currentUser) => {
+                    let curentID = currentUser._id; 
+                    let coinArr = currentUser.coins; 
+    
+                    const indexSplice = coinArr.indexOf(id)
+                    if (indexSplice > -1) {
+                        coinArr.splice(indexSplice, 1)
+                    }
+    
+                    let data = {coins: coinArr};
+    
+                    UserService.update(curentID, data)
+                    console.log('delete');
+    
+                },[userEmailArr]) 
+                .then(() => {
+                    window.location.reload();
+                })
+    };
+    
+    
+const Coin = ({coin, loggedUser}) => {
 
-        const indexSplice = coinArr.indexOf(id)
-        if (indexSplice > -1) {
-            coinArr.splice(indexSplice, 1)
-        }
-
-        let data = {coins: coinArr};
-
-        UserService.update(curentID, data)
-console.log('delete');
-
-    },[userEmailArr]) 
-    .then((res) => {
-        setIsActive(false);
-        window.location.reload();
-    })
-};
 
 
     return (
@@ -75,7 +77,7 @@ console.log('delete');
                 </span>
                 <i onClick={(e) =>{
                     e.preventDefault()
-                    DeleteCoin(coin, loggedUser)
+                    DeleteCoin(coin.id, loggedUser)
                 }} className="fa fa-times-circle text-danger"></i>
             </li>
         </Link> 
