@@ -4,10 +4,12 @@ import Coin from './coin'
 import UserService from "../services/UserService";
 
 
+
 var coinArr = [];
 var userEmailArr = [];
 var coinArray = [];
 var userIndex; 
+
 
 const UserCoinList = (props) => {
     const [coins, setCoins] = useState([]);
@@ -15,7 +17,11 @@ const UserCoinList = (props) => {
     let [userCoinList, setuserCoinList] = useState([]);
     let [emptyPortfolio, setEmptyPortfolio] = useState(true)
     const [didMount, setDidMount] = useState(false); 
-
+    function sleep(ms) {
+        return new Promise(
+          resolve => setTimeout(resolve, ms)
+        );
+      }
 
     let loggedUser = props.loggedUser.email
     UserService.getAll()
@@ -49,7 +55,11 @@ const UserCoinList = (props) => {
         });
         setCoins(response.data);
         // console.log("============================", userCoinList)
+        async function delayedGreeting() {
+            await sleep(4000);
         setIsLoading(false)
+        }
+        delayedGreeting()
     };
     if (userCoinList !== undefined && userCoinList.length > 0) {
         setEmptyPortfolio(false)
@@ -67,10 +77,53 @@ if(!didMount) {
 
     const renderCoins = () => {
     if (isLoading) {
-        return <div>Loading...</div>;
+        return (
+            <div className="centerStuff">
+            <div className="blobs">
+            <div className="blob-center"></div>
+            <div className="blob"></div>
+            <div className="blob"></div>
+            <div className="blob"></div>
+            <div className="blob"></div>
+            <div className="blob"></div>
+            <div className="blob"></div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+            </defs>
+            </svg>
+            </div>
+        )
     }
-    if (emptyPortfolio && isLoading === false){
-        return<div> No coins in this portfolio yet.</div>
+    if (emptyPortfolio){
+        return(            
+        <div className="centerStuff">
+        <div className="blobs">
+        <div className="blob-center"></div>
+        <div className="blob"></div>
+        <div className="blob"></div>
+        <div className="blob"></div>
+        <div className="blob"></div>
+        <div className="blob"></div>
+        <div className="blob"></div>
+        </div>
+        <h3> No Tokens in This Profile Yet</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+        </defs>
+        </svg>
+        </div>
+        )
     }
 
     return (

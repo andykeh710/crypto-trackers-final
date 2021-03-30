@@ -27,9 +27,10 @@ const UserPage = ({coin, user}) => {
 
 
     return (
-        <div  className=" shadow border p-2 rounded mt-2 profileBasket"> 
+        <div  className=" p-2 rounded mt-2 profileBasket"> 
             
             <h1 className="text-warning">{user}</h1>
+
             <br></br>
         <ul className="coinlist list-group mt-2 ">
         {coins.map((coin) => {

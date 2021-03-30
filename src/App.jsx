@@ -9,6 +9,9 @@ import "./App.css"
 import { WatchListContextProvider } from './context/watchlistContext';
 // import AboutUs from './AboutUs'
 
+
+
+
 const Welcome = ({ stickyRef }) => (
     <div className="welcome" ref={stickyRef}>
     </div>
