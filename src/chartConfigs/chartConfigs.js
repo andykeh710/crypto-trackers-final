@@ -6,7 +6,7 @@
         },
     
         animation: {
-        duration: 2000,
+        duration: 3000,
         },
         maintainAspectRatio: false,
         responsive: true,
