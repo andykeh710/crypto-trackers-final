@@ -54,7 +54,6 @@ const UserCoinList = (props) => {
         },
         });
         setCoins(response.data);
-        // console.log("============================", userCoinList)
         async function delayedGreeting() {
             await sleep(4000);
         setIsLoading(false)
