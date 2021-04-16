@@ -18,7 +18,7 @@
                 <span>{data.total_supply}</span>
                 </div>
             </div>
-
+ 
             <div className="col-sm">
                 <div className="d-flex flex-column">
                 <span className="text-muted coin-data-category">Volume(24H)</span>

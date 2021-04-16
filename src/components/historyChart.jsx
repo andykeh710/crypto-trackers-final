@@ -61,7 +61,7 @@
         }
     };
     return (
-        <div className="bg-white border mt-2 rounded p-3">
+        <div className="rounded chartContain">
         <div>{renderPrice()}</div>
         <div>
             <canvas ref={chartRef} id="myChart" width={250} height={250}></canvas>
@@ -70,22 +70,23 @@
         <div className="chart-button mt-1">
             <button
             onClick={() => setTimeFormat("24h")}
-            className="btn btn-outline-secondary btn-sm"
+            className="btn2 third btn-sm"
             >
             24h
             </button>
             <button
             onClick={() => setTimeFormat("7d")}
-            className="btn btn-outline-secondary btn-sm mx-1"
+            className="btn2 third btn-sm mx-1"
             >
             7d
             </button>
             <button
             onClick={() => setTimeFormat("1y")}
-            className="btn btn-outline-secondary btn-sm"
+            className="btn2 third btn-sm"
             >
             1y
             </button>
+
         </div>
         </div>
     );

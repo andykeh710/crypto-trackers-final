@@ -1,5 +1,6 @@
 import React from "react";
 import AddCoin from "../components/AddCoin";
+import AddNewPortfolio from "../components/AddNewPortfolio"
 import UserCoinList from "../components/UserCoinList";
 // import BuildPortfolio from "../components/BuildPortfolio";
 /// This is where we will create portfolios and push them to the db 
@@ -12,11 +13,12 @@ const CreatePortfolio = (props) => {
 
 
 return (
-    <div className="shadow border p-2 rounded mt-2 profileBasket2">
+    <div className=" p-2 rounded profileBasket2">
 
         <h1 className="text-warning text-center">Hello {props.loggedUser.name}</h1>
-        
-        <AddCoin loggedUser={props.loggedUser}/>
+
+        <AddCoin loggedUser={props.loggedUser}/>  <AddNewPortfolio className="rightSide addPortolio btn2 " />
+    
         <UserCoinList loggedUser={props.loggedUser}/>
 
     </div>

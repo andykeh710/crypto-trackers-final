@@ -67,7 +67,7 @@
         <div className="dropdown">
         <button
             onClick={() => setIsActive(!isActive)}
-            className="btn btn-primary dropdown-toggle"
+            className="btn dropdown-toggle third"
             type="button"
         >
             Add Coin
