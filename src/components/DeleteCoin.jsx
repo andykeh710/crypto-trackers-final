@@ -16,7 +16,6 @@ const [setIsActive] = useState(false);
     // promise pending express react ---
     UserService.getAll()
     .then((res) => {
-        //console.log("RES > DATA ", res.data)
         let allUsers = res.data;
         if (userEmailArr.length === 0){
         for (let i=0; i< allUsers.length; i++){
